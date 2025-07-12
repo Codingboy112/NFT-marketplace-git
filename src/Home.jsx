@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { BiRocket,BiPaint } from "react-icons/bi";
-import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOutline,IoMail } from "react-icons/io5";
 import './home.css';
 import mainImg from './assents/mainimg.png';
 import animakid from "./assents/userImgAnimakid.png"
@@ -23,15 +23,25 @@ import { Pagination } from 'swiper/modules';
 import keepitreal from './assents/keepitreal.png';
 import digilap from "./assents/digilab.png"
 import gravityone from "./assents/gravityone.png"
-import juanie from "./assents/juanie.png"
-import bluewhale from "./assents/bluewhale.png"
 import robotica from "./assents/robotica.png"
 import rustyrobot from "./assents/rustyrobot.png"
-import ghiblier from "./assents/ghiblier.png"
+import moondancer from "./assents/moondacer.png"
+import spaceship from "./assents/spaceship.png"
+import nebulakid from "./assents/nebulakid.png"
+import edena from "./assents/edena.png"
+import spaceone from "./assents/spaceone.png"
+import astro from "./assents/astro.png"
+import wallet from "./assents/wallet.png"
+import collection from "./assents/collection.png"
+import earn from "./assents/earn.png"
+import astrocos from "./assents/astrocos.png"
+import img from "./assents/image.png"
 
 const Home = () => {
   const [swiperN, setswiperN] = useState(3)
   const [swiperN1, setswiperN1] = useState(4)
+  const [hour, sethour] = useState([])
+  
   function mobileView() {
       if (window.innerWidth < 791) {
         setswiperN(1)
@@ -45,6 +55,20 @@ const Home = () => {
         setswiperN1(4)
       }
   }
+  useEffect(() => {
+    setInterval(() => {
+    let data = new Date()
+    let hours = data.getHours()
+    let min = data.getMinutes()
+    let sec = data.getSeconds()
+    sethour([...hour,hours,min,sec])
+  }, 1000);
+  }, [])
+  
+  
+  
+  
+  
     
   return (
     <>
@@ -167,14 +191,14 @@ const Home = () => {
         </SwiperSlide>
         <SwiperSlide className="card">
           <div className="level">4</div>
-          <img src={juanie} alt="" />
-          <h1>Juanie</h1>
+          <img src={nebulakid} alt="" />
+          <h1>NebulaKid</h1>
           <h3><b>Total Sales:</b> 34.53 ETH</h3>
         </SwiperSlide>
         <SwiperSlide className="card">
           <div className="level">5</div>
-          <img src={bluewhale} alt="" />
-          <h1>BlueWhale</h1>
+          <img src={moondancer} alt="" />
+          <h1>MoonDancer</h1>
           <h3><b>Total Sales:</b> 34.53 ETH</h3>
         </SwiperSlide>
         <SwiperSlide className="card">
@@ -215,8 +239,8 @@ const Home = () => {
         </SwiperSlide>
         <SwiperSlide className="card">
           <div className="level">12</div>
-          <img src={ghiblier} alt="" />
-          <h1>Ghiblier</h1>
+          <img src={spaceone} alt="" />
+          <h1>SpaceOne</h1>
           <h3><b>Total Sales:</b> 34.53 ETH</h3>
         </SwiperSlide>
       </Swiper>
@@ -224,9 +248,18 @@ const Home = () => {
     </section>
     <section className="categories">
       <h1>Browse Categories</h1>
-      <div className="categories-container">
+    </section>
+    <section className="discover">
+      <div className="discover-header">
+        <div className="discover-info">
+          <h1>Discover More NFTs</h1><br />
+          <h3>Explore New trending NFTs</h3>
+        </div>
+        <button><IoEyeOutline /> See All</button>
+      </div>
+      <div className="discover-container">
         <Swiper
-        slidesPerView={swiperN1}
+        slidesPerView={swiperN}
         onResize={() => {
           mobileView();
         }}
@@ -235,23 +268,137 @@ const Home = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="categories-container"
+        className="discover-container"
       >
         <SwiperSlide className="card">
-          <img src="" alt="" />
-          <div><BiPaint /></div>
-          <h1>Art</h1>
+          <img src={spaceship} alt="" />
+          <div className="inner-card">
+          <h1>Distant Galaxy</h1>
+          <h3><img src={moondancer} alt="" /> MoonDancer</h3>
+          <div className="card-info">
+            <div className="price">
+              <h3>Price</h3>
+              <h1>1.63 ETH</h1>
+            </div>
+            <div className="bid">
+              <h3>Highest Bid</h3>
+              <h1>0.33 wETH</h1>
+            </div>
+          </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className="card">
+          <img src={edena} alt="" />
+          <div className="inner-card">
+          <h1>Life On Edena</h1>
+          <h3><img src={nebulakid} alt="" /> NebulaKid</h3>
+          <div className="card-info">
+            <div className="price">
+              <h3>Price</h3>
+              <h1>1.63 ETH</h1>
+            </div>
+            <div className="bid">
+              <h3>Highest Bid</h3>
+              <h1>0.33 wETH</h1>
+            </div>
+          </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className="card">
+          <img src={astro} alt="" />
+          <div className="inner-card">
+          <h1>Life On Edena</h1>
+          <h3><img src={spaceone} alt="" /> SpaceOne</h3>
+          <div className="card-info">
+            <div className="price">
+              <h3>Price</h3>
+              <h1>1.63 ETH</h1>
+            </div>
+            <div className="bid">
+              <h3>Highest Bid</h3>
+              <h1>0.33 wETH</h1>
+            </div>
+          </div>
+          </div>
         </SwiperSlide>
         </Swiper>
       </div>
-    </section>
-    <section className="discover">
-      <div className="discover-header">
-        <div className="discover-info">
-          <h1>Discover MOre NFTs</h1>
-          <h3>Explore New trending NFTs</h3>
+    </section><br /><br /><br />
+    <section className="timer">
+        <div className="purple">
+          <div className="left">
+            <div className="user-nick">
+              <img src={sroomie} alt="" />
+              <h3>Shroomie</h3>
+            </div>
+            <h1>Magic Mashrooms</h1>
+            <button><IoEyeOutline /> See All</button>
+          </div>
+          <div className="right">
+            <h3>Auction ends in:</h3>
+            <div className="hour">
+              <h1 className="h">{hour[0] < 10 ? "0" + hour[0] : hour[0]}</h1>
+              <h1>:</h1>
+              <h1>{hour[1] < 10 ? "0" + hour[1] : hour[1]}</h1>
+              <h1>:</h1>
+              <h1>{hour[2] < 10 ? "0" + hour[2] : hour[2]}</h1>
+            </div>
+            <div className="hour-info">
+              <h5>Hours</h5>            
+              <h5>Minutes</h5>
+              <h5>Seconds</h5>
+            </div>
+          </div>
         </div>
-        <button><IoEyeOutline /> See All</button>
+    </section>
+    <section className="working">
+      <h1>How It Works</h1>
+      <h3>Find Out How To  Get Started</h3>
+      <Swiper
+        slidesPerView={swiperN}
+        onResize={() => {
+          mobileView();
+        }}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="working-container"
+      >
+        <SwiperSlide className="card">
+          <img src={wallet} alt="" />
+          <h1>Setup Your Wallet</h1>
+          <h3>Set up your wallet of choice. 
+          <br /> Connect it to the Animarket by 
+          <br /> clicking the wallet icon in the top 
+          <br /> right corner.</h3>
+        </SwiperSlide>
+        <SwiperSlide className="card">
+          <img src={collection} alt="" />
+          <h1>Create Collection</h1>
+          <h3>Upload your work and setup your <br /> collection. Add a description, <br /> social links and floor price.</h3>
+        </SwiperSlide>
+        <SwiperSlide className="card">
+          <img src={earn} alt="" />
+          <h1>Start Earning</h1>
+          <h3>Choose between auctions and <br /> fixed-price listings. Start earning <br /> by selling your NFTs or trading <br /> others.</h3>
+        </SwiperSlide>
+        </Swiper>
+    </section>
+    <section className="join">
+      <div className="join-container">
+      <div className="img">
+      <img src={astrocos} alt="" />
+      </div>
+      <div className="join-info">
+        <h1>Join Our weekly <br /> Digest</h1>
+        <h3>Get Exclusive Promotions & Updates <br /> Straight To Your Inbox.</h3>
+        <div className="mess">
+        <input type="email" placeholder="Enter your enail here" />
+        <button><IoMail /> Subscribe</button>
+        </div>
+      </div>
       </div>
     </section>
     </>
